@@ -130,6 +130,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AllocationsController.cs" />
+    <Compile Include="Controllers\ClassroomController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -146,12 +148,31 @@
     <Compile Include="Migrations\201912101615180_studnt regdate.designer.cs">
       <DependentUpon>201912101615180_studnt regdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912102004447_drop.cs" />
+    <Compile Include="Migrations\201912102004447_drop.designer.cs">
+      <DependentUpon>201912102004447_drop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912102007304_room&amp;day.cs" />
+    <Compile Include="Migrations\201912102007304_room&amp;day.designer.cs">
+      <DependentUpon>201912102007304_room&amp;day.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912102008338_room&amp;day data.cs" />
+    <Compile Include="Migrations\201912102008338_room&amp;day data.designer.cs">
+      <DependentUpon>201912102008338_room&amp;day data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912120526273_allocations.cs" />
+    <Compile Include="Migrations\201912120526273_allocations.designer.cs">
+      <DependentUpon>201912120526273_allocations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Allocation.cs" />
     <Compile Include="Models\AssignCourse.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Day.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Designation.cs" />
     <Compile Include="Models\ProjectDbContext.cs" />
+    <Compile Include="Models\Room.cs" />
     <Compile Include="Models\Semester.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Teacher.cs" />
@@ -212,12 +233,18 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\Timepicker\css\timepicki.css" />
+    <Content Include="Content\Timepicker\images\arrow.png" />
+    <Content Include="Content\Timepicker\images\top_arr.png" />
+    <Content Include="Content\Timepicker\index.php" />
+    <Content Include="Content\Timepicker\js\timepicki.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\Timepicker\images\Thumbs.db" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -266,6 +293,12 @@
     <Content Include="Views\Students\Details.cshtml" />
     <Content Include="Views\Students\Edit.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\Classroom\AllocateClassroom.cshtml" />
+    <Content Include="Views\Allocations\Create.cshtml" />
+    <Content Include="Views\Allocations\Delete.cshtml" />
+    <Content Include="Views\Allocations\Details.cshtml" />
+    <Content Include="Views\Allocations\Edit.cshtml" />
+    <Content Include="Views\Allocations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -289,6 +322,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912101615180_studnt regdate.resx">
       <DependentUpon>201912101615180_studnt regdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912102004447_drop.resx">
+      <DependentUpon>201912102004447_drop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912102007304_room&amp;day.resx">
+      <DependentUpon>201912102007304_room&amp;day.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912102008338_room&amp;day data.resx">
+      <DependentUpon>201912102008338_room&amp;day data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912120526273_allocations.resx">
+      <DependentUpon>201912120526273_allocations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
