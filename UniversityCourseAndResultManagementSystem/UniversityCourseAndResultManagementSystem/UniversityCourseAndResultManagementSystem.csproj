@@ -131,6 +131,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AllocationsController.cs" />
+    <Compile Include="Controllers\AssignCoursesController.cs" />
     <Compile Include="Controllers\ClassroomController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
@@ -163,6 +164,10 @@
     <Compile Include="Migrations\201912120526273_allocations.cs" />
     <Compile Include="Migrations\201912120526273_allocations.designer.cs">
       <DependentUpon>201912120526273_allocations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912121627269_assign.cs" />
+    <Compile Include="Migrations\201912121627269_assign.designer.cs">
+      <DependentUpon>201912121627269_assign.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Allocation.cs" />
@@ -299,6 +304,11 @@
     <Content Include="Views\Allocations\Details.cshtml" />
     <Content Include="Views\Allocations\Edit.cshtml" />
     <Content Include="Views\Allocations\Index.cshtml" />
+    <Content Include="Views\AssignCourses\Create.cshtml" />
+    <Content Include="Views\AssignCourses\Delete.cshtml" />
+    <Content Include="Views\AssignCourses\Details.cshtml" />
+    <Content Include="Views\AssignCourses\Edit.cshtml" />
+    <Content Include="Views\AssignCourses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -334,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912120526273_allocations.resx">
       <DependentUpon>201912120526273_allocations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912121627269_assign.resx">
+      <DependentUpon>201912121627269_assign.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

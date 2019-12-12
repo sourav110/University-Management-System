@@ -15,7 +15,7 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
         {
 
             ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "DepartmentCode");
-            ViewBag.Courses = new SelectList(db.Courses, "CourseId", "CourseCode");
+            //ViewBag.Courses = new SelectList(db.Courses, "CourseId", "CourseCode");
             ViewBag.RoomId = new SelectList(db.Rooms, "RoomId", "RoomNo");
             ViewBag.DayId = new SelectList(db.Days, "DayId", "DayName");
             return View();
