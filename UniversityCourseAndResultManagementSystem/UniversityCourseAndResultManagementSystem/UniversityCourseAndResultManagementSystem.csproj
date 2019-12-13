@@ -130,6 +130,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdemoesController.cs" />
     <Compile Include="Controllers\AllocationsController.cs" />
     <Compile Include="Controllers\AssignCoursesController.cs" />
     <Compile Include="Controllers\ClassroomController.cs" />
@@ -169,7 +170,12 @@
     <Compile Include="Migrations\201912121627269_assign.designer.cs">
       <DependentUpon>201912121627269_assign.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912131631070_nullable.cs" />
+    <Compile Include="Migrations\201912131631070_nullable.designer.cs">
+      <DependentUpon>201912131631070_nullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Ademo.cs" />
     <Compile Include="Models\Allocation.cs" />
     <Compile Include="Models\AssignCourse.cs" />
     <Compile Include="Models\Course.cs" />
@@ -309,6 +315,11 @@
     <Content Include="Views\AssignCourses\Details.cshtml" />
     <Content Include="Views\AssignCourses\Edit.cshtml" />
     <Content Include="Views\AssignCourses\Index.cshtml" />
+    <Content Include="Views\Ademoes\Create.cshtml" />
+    <Content Include="Views\Ademoes\Delete.cshtml" />
+    <Content Include="Views\Ademoes\Details.cshtml" />
+    <Content Include="Views\Ademoes\Edit.cshtml" />
+    <Content Include="Views\Ademoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -347,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912121627269_assign.resx">
       <DependentUpon>201912121627269_assign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912131631070_nullable.resx">
+      <DependentUpon>201912131631070_nullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

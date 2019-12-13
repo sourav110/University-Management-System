@@ -1,0 +1,114 @@
+﻿@model UniversityCourseAndResultManagementSystem.Models.Ademo
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Ademo</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.DepartmentId, "DepartmentId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("DepartmentId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CourseId, "Course", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" id="CourseId" name="CourseId">
+                    <option>--Select Course--</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CourseName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Credit, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Credit, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Credit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Assign" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            $("#DepartmentId").change(function () {
+                var deptId = $("#DepartmentId").val();
+                var parameter = { departmentId: deptId }
+
+                $("#CourseId").empty();
+                $("#CourseId").append('<option>--Select Course--</option>');
+
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetCoursesByDepartmentId", "Ademoes")',
+                    contentType: "application/json; charset= utf-8",
+                    data: JSON.stringify(parameter),
+                    success: function (courseList) {
+                        $.each(courseList, function (key, value) {
+                            $("#CourseId").append('<option value=' + key.CourseId + '>' + value.CourseName + '</option>');
+                        });
+                    }
+                });
+            });
+
+            $("#CourseId").change(function () {
+                var id = $("#CourseId").val();
+                var parameter = { courseId: id }
+
+                $("#CourseName").val("");
+                $("#Credit").val("");
+
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetCourseByCourseId", "Ademoes")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(parameter),
+                    success: function (course) {
+                        //$("#CourseName").val(course.CourseName);
+                        //$("#Credit").val(course.Credit);
+                        $("#CourseName").val(course.CourseName);
+                        $("#Credit").val(course.Credit);
+                    }
+                });
+
+            });
+        });
+    </script>
+}
