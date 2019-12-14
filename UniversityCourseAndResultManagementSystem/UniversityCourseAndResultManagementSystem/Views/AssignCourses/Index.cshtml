@@ -16,10 +16,10 @@
             @Html.DisplayNameFor(model => model.Course.CourseCode)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DepartmentId)
+            @Html.DisplayNameFor(model => model.Department.DepartmentCode)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TeacherId)
+            @Html.DisplayNameFor(model => model.Teacher.TeacherName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CreditToBeTaken)
@@ -31,7 +31,7 @@
             @Html.DisplayNameFor(model => model.CourseName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Credit)
+            @Html.DisplayNameFor(model => model.CourseCredit)
         </th>
         <th></th>
     </tr>
@@ -42,10 +42,10 @@
             @Html.DisplayFor(modelItem => item.Course.CourseCode)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DepartmentId)
+            @Html.DisplayFor(modelItem => item.Department.DepartmentCode)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TeacherId)
+            @Html.DisplayFor(modelItem => item.Teacher.TeacherName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CreditToBeTaken)
@@ -57,7 +57,7 @@
             @Html.DisplayFor(modelItem => item.CourseName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Credit)
+            @Html.DisplayFor(modelItem => item.CourseCredit)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.AssignId }) |

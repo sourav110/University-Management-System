@@ -130,12 +130,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AdemoesController.cs" />
     <Compile Include="Controllers\AllocationsController.cs" />
     <Compile Include="Controllers\AssignCoursesController.cs" />
     <Compile Include="Controllers\ClassroomController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\EnrollsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
@@ -166,22 +166,31 @@
     <Compile Include="Migrations\201912120526273_allocations.designer.cs">
       <DependentUpon>201912120526273_allocations.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912121627269_assign.cs" />
-    <Compile Include="Migrations\201912121627269_assign.designer.cs">
-      <DependentUpon>201912121627269_assign.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201912131631070_nullable.cs" />
     <Compile Include="Migrations\201912131631070_nullable.designer.cs">
       <DependentUpon>201912131631070_nullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912140612471_enrollment.cs" />
+    <Compile Include="Migrations\201912140612471_enrollment.designer.cs">
+      <DependentUpon>201912140612471_enrollment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912140626196_assignNew.cs" />
+    <Compile Include="Migrations\201912140626196_assignNew.designer.cs">
+      <DependentUpon>201912140626196_assignNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912140627532_assigned.cs" />
+    <Compile Include="Migrations\201912140627532_assigned.designer.cs">
+      <DependentUpon>201912140627532_assigned.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Ademo.cs" />
     <Compile Include="Models\Allocation.cs" />
     <Compile Include="Models\AssignCourse.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Designation.cs" />
+    <Compile Include="Models\Enroll.cs" />
+    <Compile Include="Models\ModelBuilder.cs" />
     <Compile Include="Models\ProjectDbContext.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\Semester.cs" />
@@ -310,16 +319,16 @@
     <Content Include="Views\Allocations\Details.cshtml" />
     <Content Include="Views\Allocations\Edit.cshtml" />
     <Content Include="Views\Allocations\Index.cshtml" />
+    <Content Include="Views\Enrolls\Create.cshtml" />
+    <Content Include="Views\Enrolls\Delete.cshtml" />
+    <Content Include="Views\Enrolls\Details.cshtml" />
+    <Content Include="Views\Enrolls\Edit.cshtml" />
+    <Content Include="Views\Enrolls\Index.cshtml" />
     <Content Include="Views\AssignCourses\Create.cshtml" />
     <Content Include="Views\AssignCourses\Delete.cshtml" />
     <Content Include="Views\AssignCourses\Details.cshtml" />
     <Content Include="Views\AssignCourses\Edit.cshtml" />
     <Content Include="Views\AssignCourses\Index.cshtml" />
-    <Content Include="Views\Ademoes\Create.cshtml" />
-    <Content Include="Views\Ademoes\Delete.cshtml" />
-    <Content Include="Views\Ademoes\Details.cshtml" />
-    <Content Include="Views\Ademoes\Edit.cshtml" />
-    <Content Include="Views\Ademoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -356,11 +365,17 @@
     <EmbeddedResource Include="Migrations\201912120526273_allocations.resx">
       <DependentUpon>201912120526273_allocations.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912121627269_assign.resx">
-      <DependentUpon>201912121627269_assign.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912131631070_nullable.resx">
       <DependentUpon>201912131631070_nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912140612471_enrollment.resx">
+      <DependentUpon>201912140612471_enrollment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912140626196_assignNew.resx">
+      <DependentUpon>201912140626196_assignNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912140627532_assigned.resx">
+      <DependentUpon>201912140627532_assigned.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

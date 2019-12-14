@@ -19,24 +19,13 @@ namespace UniversityCourseAndResultManagementSystem.Models
         public DbSet<Day> Days { get; set; }
         public DbSet<Allocation> Allocations { get; set; }
         public DbSet<AssignCourse> AssignCourses { get; set; }
-        public DbSet<Ademo> Ademos { get; set; }
+        public DbSet<Enroll> Enrolls { get; set; }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+        }
 
-        //    modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-
-        //    modelBuilder.Entity<Ademo>()
-        //       .HasRequired(f => f.Department)
-        //       .WithRequiredDependent()
-        //       .WillCascadeOnDelete(false);
-
-        //    modelBuilder.Entity<Teacher>()
-        //       .HasRequired(f => f.Department)
-        //       .WithRequiredDependent()
-        //       .WillCascadeOnDelete(false);
-
-        //}
 
         //public System.Data.Entity.DbSet<UniversityCourseAndResultManagementSystem.Models.Student> Students { get; set; }
     }
