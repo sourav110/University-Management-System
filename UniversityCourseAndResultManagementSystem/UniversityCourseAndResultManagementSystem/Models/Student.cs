@@ -41,5 +41,7 @@ namespace UniversityCourseAndResultManagementSystem.Models
         public int DepartmentId { get; set; }
         [ForeignKey("DepartmentId")]
         public virtual Department Department { get; set; }
+
+        public string RegNo { get; set; }
     }
 }

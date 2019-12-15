@@ -64,6 +64,19 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
             return View(enroll);
         }
 
+
+        public JsonResult GetStudentByStudentId(int studentId)
+        {
+            var student = db.Students.FirstOrDefault(s => s.StudentId == studentId);
+            return Json(student);
+        }
+
+        public JsonResult GetCoursesByDepartmentId(int departmentId)
+        {
+            var courses = db.Courses.Where(c => c.DepartmentId == departmentId).ToList();
+            return Json(courses);
+        }
+
         // GET: Enrolls/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {

@@ -182,6 +182,10 @@
     <Compile Include="Migrations\201912140627532_assigned.designer.cs">
       <DependentUpon>201912140627532_assigned.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912141959535_student regno.cs" />
+    <Compile Include="Migrations\201912141959535_student regno.designer.cs">
+      <DependentUpon>201912141959535_student regno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Allocation.cs" />
     <Compile Include="Models\AssignCourse.cs" />
@@ -376,6 +380,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912140627532_assigned.resx">
       <DependentUpon>201912140627532_assigned.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912141959535_student regno.resx">
+      <DependentUpon>201912141959535_student regno.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

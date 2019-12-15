@@ -89,7 +89,7 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
-<script>
+    <script>
         $(document).ready(function () {
             $("#DepartmentId").change(function () {
                 var deptId = $("#DepartmentId").val();
@@ -98,7 +98,7 @@
                 $("#TeacherId").empty();
                 $("#TeacherId").append('<option>--Select Teacher--</option>');
 
-                
+
                 $.ajax({
                     type: "POST",
                     url: '@Url.Action("GetTeachersByDepartmentId", "AssignCourses")',
@@ -150,5 +150,5 @@
 
 
         });
-</script>
+    </script>
 }
