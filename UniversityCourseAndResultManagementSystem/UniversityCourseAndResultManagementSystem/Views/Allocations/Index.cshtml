@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>View Assign Courses</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+</p>*@
+<table class="table table-bordered table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Course.CourseCode)
@@ -19,10 +19,10 @@
             @Html.DisplayNameFor(model => model.Day.DayName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Room.RoomNo)
+            @Html.DisplayNameFor(model => model.Department.DepartmentCode)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DepartmentId)
+            @Html.DisplayNameFor(model => model.Room.RoomNo)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FromTime)
@@ -42,10 +42,10 @@
             @Html.DisplayFor(modelItem => item.Day.DayName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Room.RoomNo)
+            @Html.DisplayFor(modelItem => item.Department.DepartmentCode)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DepartmentId)
+            @Html.DisplayFor(modelItem => item.Room.RoomNo)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.FromTime)

@@ -18,19 +18,19 @@ namespace UniversityCourseAndResultManagementSystem.Models
         [Column(TypeName = "varchar")]
         [StringLength(50)]
         public string StudentName { get; set; }
-       
+
         [Required(ErrorMessage = "Please enter Email")]
         [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessage = "Please enter valid email")]
         [Column(TypeName = "varchar")]
-        [Remote("IsEmailExists", "Teachers", ErrorMessage = "Email already exists")]
+        //[Remote("IsEmailExists", "Teachers", ErrorMessage = "Email already exists")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please enter Contact No.")]
         [Display(Name = "Contact No.")]
-        [Remote("IsContactNoExists", "Teachers", ErrorMessage = "Contact NO. already exists")]
+        //[Remote("IsContactNoExists", "Teachers", ErrorMessage = "Contact NO. already exists")]
         public string ContactNo { get; set; }
 
-        [Display(Name ="Date")]
+        [Display(Name = "Date")]
         [DataType(DataType.DateTime)]
         public DateTime RegistrationDate { get; set; }
 

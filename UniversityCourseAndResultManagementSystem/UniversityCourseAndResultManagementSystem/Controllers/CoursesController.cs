@@ -51,7 +51,7 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "CourseId,CourseCode,CourseName,Credit,Description,DepartmentId,SemesterId")] Course course)
+        public async Task<ActionResult> Create([Bind(Include = "CourseId,CourseCode,CourseName,CourseCredit,Description,DepartmentId,SemesterId")] Course course)
         {
             if (ModelState.IsValid)
             {
@@ -117,7 +117,7 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "CourseId,CourseCode,CourseName,Credit,Description,DepartmentId,SemesterId")] Course course)
+        public async Task<ActionResult> Edit([Bind(Include = "CourseId,CourseCode,CourseName,CourseCredit,Description,DepartmentId,SemesterId")] Course course)
         {
             if (ModelState.IsValid)
             {

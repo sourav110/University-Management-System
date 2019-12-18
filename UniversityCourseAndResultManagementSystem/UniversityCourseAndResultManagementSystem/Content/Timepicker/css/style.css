@@ -1,0 +1,31 @@
+/*
+ * Globals
+ */
+
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+
+
+
+/*
+ * Base structure
+ */
+
+
+
+
+
+
+
+
+
+
+
+input[type='text'] {
+   color:red;
+}
+

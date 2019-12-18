@@ -18,7 +18,7 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
         // GET: Allocations
         public async Task<ActionResult> Index()
         {
-            var allocations = db.Allocations.Include(a => a.Course).Include(a => a.Day).Include(a => a.Room);
+            var allocations = db.Allocations.Include(a => a.Course).Include(a => a.Day).Include(a => a.Department).Include(a => a.Room);
             return View(await allocations.ToListAsync());
         }
 
@@ -40,9 +40,8 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
         // GET: Allocations/Create
         public ActionResult Create()
         {
-            ViewBag.Departments = db.Departments.ToList();
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseCode");
             ViewBag.DayId = new SelectList(db.Days, "DayId", "DayName");
+            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "DepartmentCode");
             ViewBag.RoomId = new SelectList(db.Rooms, "RoomId", "RoomNo");
             return View();
         }
@@ -52,31 +51,26 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "AllocationId,DepartmentId,CourseId,RoomId,DayId,FromTime,ToTime")] Allocation allocation)
+        public async Task<ActionResult> Create(Allocation allocation)
         {
             if (ModelState.IsValid)
             {
                 db.Allocations.Add(allocation);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Create");
+                return RedirectToAction("Index");
             }
 
-
-            ViewBag.Departments = db.Departments.ToList();
-            //ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "DepartmentCode");
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseCode", allocation.CourseId);
             ViewBag.DayId = new SelectList(db.Days, "DayId", "DayName", allocation.DayId);
+            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "DepartmentCode", allocation.DepartmentId);
             ViewBag.RoomId = new SelectList(db.Rooms, "RoomId", "RoomNo", allocation.RoomId);
             return View(allocation);
         }
-
 
         public JsonResult GetCoursesByDepartmentId(int departmentId)
         {
             var courses = db.Courses.Where(c => c.DepartmentId == departmentId).ToList();
             return Json(courses);
         }
-
 
 
         // GET: Allocations/Edit/5
@@ -93,6 +87,7 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
             }
             ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseCode", allocation.CourseId);
             ViewBag.DayId = new SelectList(db.Days, "DayId", "DayName", allocation.DayId);
+            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "DepartmentCode", allocation.DepartmentId);
             ViewBag.RoomId = new SelectList(db.Rooms, "RoomId", "RoomNo", allocation.RoomId);
             return View(allocation);
         }
@@ -112,6 +107,7 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
             }
             ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseCode", allocation.CourseId);
             ViewBag.DayId = new SelectList(db.Days, "DayId", "DayName", allocation.DayId);
+            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "DepartmentCode", allocation.DepartmentId);
             ViewBag.RoomId = new SelectList(db.Rooms, "RoomId", "RoomNo", allocation.RoomId);
             return View(allocation);
         }

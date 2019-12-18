@@ -15,18 +15,17 @@ namespace UniversityCourseAndResultManagementSystem.Models
         public DbSet<Designation> Designations { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Student> Students { get; set; }
-        public DbSet<Room> Rooms { get; set; }
         public DbSet<Day> Days { get; set; }
+        public DbSet<Room> Rooms { get; set; }
         public DbSet<Allocation> Allocations { get; set; }
         public DbSet<AssignCourse> AssignCourses { get; set; }
         public DbSet<Enroll> Enrolls { get; set; }
+        public DbSet<Grade> Grades { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
         }
-
-
-        //public System.Data.Entity.DbSet<UniversityCourseAndResultManagementSystem.Models.Student> Students { get; set; }
     }
 }

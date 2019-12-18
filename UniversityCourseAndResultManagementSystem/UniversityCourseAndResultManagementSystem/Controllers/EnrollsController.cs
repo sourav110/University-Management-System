@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using UniversityCourseAndResultManagementSystem.Models;
+using Vereyon.Web;
 
 namespace UniversityCourseAndResultManagementSystem.Controllers
 {
@@ -50,7 +51,7 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "EnrollId,StudentId,StudentName,Email,Department,CourseId,Date")] Enroll enroll)
+        public async Task<ActionResult> Create([Bind(Include = "EnrollId,StudentId,CourseId,Date")] Enroll enroll)
         {
             if (ModelState.IsValid)
             {
@@ -65,17 +66,48 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
         }
 
 
-        public JsonResult GetStudentByStudentId(int studentId)
+
+
+
+        //public ActionResult SaveResult()
+        //{
+        //    ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseCode");
+        //    ViewBag.GradeId = db.Grades.ToList();
+        //    ViewBag.StudentId = new SelectList(db.Students, "StudentId", "RegNo");
+        //    return View();
+        //}
+
+        // POST: Results/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> SaveResult()
         {
-            var student = db.Students.FirstOrDefault(s => s.StudentId == studentId);
-            return Json(student);
+            if (ModelState.IsValid)
+            {
+                //db.Enrolls();
+                await db.SaveChangesAsync();
+                FlashMessage.Confirmation("Student result saved successfully");
+                return RedirectToAction("SaveResult");
+            }
+
+            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseCode");
+            ViewBag.GradeId = db.Grades.ToList();
+            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "RegNo");
+            return View();
         }
 
-        public JsonResult GetCoursesByDepartmentId(int departmentId)
-        {
-            var courses = db.Courses.Where(c => c.DepartmentId == departmentId).ToList();
-            return Json(courses);
-        }
+
+
+
+
+
+
+
+
+
+
 
         // GET: Enrolls/Edit/5
         public async Task<ActionResult> Edit(int? id)
@@ -99,7 +131,7 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "EnrollId,StudentId,StudentName,Email,Department,CourseId,Date")] Enroll enroll)
+        public async Task<ActionResult> Edit([Bind(Include = "EnrollId,StudentId,CourseId,Date")] Enroll enroll)
         {
             if (ModelState.IsValid)
             {

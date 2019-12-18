@@ -5,13 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Show All Registered Students</h2>
+<h2>All Students Information</h2>
 
 @*<p>
     @Html.ActionLink("Create New", "Create")
 </p>*@
 
-<table class="table">
+<table class="table table-bordered table-striped">
     <tr>
 
         <th>
@@ -30,7 +30,8 @@
             @Html.DisplayNameFor(model => model.Address)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Department.DepartmentCode)
+            @*@Html.DisplayNameFor(model => model.Department.DepartmentCode)*@
+            @Html.DisplayName("Department")
         </th>
         <th></th>
     </tr>

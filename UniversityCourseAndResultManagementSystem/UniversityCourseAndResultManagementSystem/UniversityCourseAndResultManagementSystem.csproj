@@ -132,7 +132,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AllocationsController.cs" />
     <Compile Include="Controllers\AssignCoursesController.cs" />
-    <Compile Include="Controllers\ClassroomController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\EnrollsController.cs" />
@@ -142,49 +141,29 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912101607501_student.cs" />
-    <Compile Include="Migrations\201912101607501_student.designer.cs">
-      <DependentUpon>201912101607501_student.cs</DependentUpon>
+    <Compile Include="Migrations\201912180523341_clone.cs" />
+    <Compile Include="Migrations\201912180523341_clone.designer.cs">
+      <DependentUpon>201912180523341_clone.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912101615180_studnt regdate.cs" />
-    <Compile Include="Migrations\201912101615180_studnt regdate.designer.cs">
-      <DependentUpon>201912101615180_studnt regdate.cs</DependentUpon>
+    <Compile Include="Migrations\201912180532532_g.cs" />
+    <Compile Include="Migrations\201912180532532_g.designer.cs">
+      <DependentUpon>201912180532532_g.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912102004447_drop.cs" />
-    <Compile Include="Migrations\201912102004447_drop.designer.cs">
-      <DependentUpon>201912102004447_drop.cs</DependentUpon>
+    <Compile Include="Migrations\201912180534439_gggg.cs" />
+    <Compile Include="Migrations\201912180534439_gggg.designer.cs">
+      <DependentUpon>201912180534439_gggg.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912102007304_room&amp;day.cs" />
-    <Compile Include="Migrations\201912102007304_room&amp;day.designer.cs">
-      <DependentUpon>201912102007304_room&amp;day.cs</DependentUpon>
+    <Compile Include="Migrations\201912180551389_aa.cs" />
+    <Compile Include="Migrations\201912180551389_aa.designer.cs">
+      <DependentUpon>201912180551389_aa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912102008338_room&amp;day data.cs" />
-    <Compile Include="Migrations\201912102008338_room&amp;day data.designer.cs">
-      <DependentUpon>201912102008338_room&amp;day data.cs</DependentUpon>
+    <Compile Include="Migrations\201912180619033_oo.cs" />
+    <Compile Include="Migrations\201912180619033_oo.designer.cs">
+      <DependentUpon>201912180619033_oo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912120526273_allocations.cs" />
-    <Compile Include="Migrations\201912120526273_allocations.designer.cs">
-      <DependentUpon>201912120526273_allocations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912131631070_nullable.cs" />
-    <Compile Include="Migrations\201912131631070_nullable.designer.cs">
-      <DependentUpon>201912131631070_nullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912140612471_enrollment.cs" />
-    <Compile Include="Migrations\201912140612471_enrollment.designer.cs">
-      <DependentUpon>201912140612471_enrollment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912140626196_assignNew.cs" />
-    <Compile Include="Migrations\201912140626196_assignNew.designer.cs">
-      <DependentUpon>201912140626196_assignNew.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912140627532_assigned.cs" />
-    <Compile Include="Migrations\201912140627532_assigned.designer.cs">
-      <DependentUpon>201912140627532_assigned.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912141959535_student regno.cs" />
-    <Compile Include="Migrations\201912141959535_student regno.designer.cs">
-      <DependentUpon>201912141959535_student regno.cs</DependentUpon>
+    <Compile Include="Migrations\201912180657487_cascade.cs" />
+    <Compile Include="Migrations\201912180657487_cascade.designer.cs">
+      <DependentUpon>201912180657487_cascade.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Allocation.cs" />
@@ -194,7 +173,7 @@
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Designation.cs" />
     <Compile Include="Models\Enroll.cs" />
-    <Compile Include="Models\ModelBuilder.cs" />
+    <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\ProjectDbContext.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\Semester.cs" />
@@ -257,10 +236,10 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\Timepicker\css\style.css" />
     <Content Include="Content\Timepicker\css\timepicki.css" />
     <Content Include="Content\Timepicker\images\arrow.png" />
     <Content Include="Content\Timepicker\images\top_arr.png" />
-    <Content Include="Content\Timepicker\index.php" />
     <Content Include="Content\Timepicker\js\timepicki.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -317,22 +296,22 @@
     <Content Include="Views\Students\Details.cshtml" />
     <Content Include="Views\Students\Edit.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
-    <Content Include="Views\Classroom\AllocateClassroom.cshtml" />
     <Content Include="Views\Allocations\Create.cshtml" />
     <Content Include="Views\Allocations\Delete.cshtml" />
     <Content Include="Views\Allocations\Details.cshtml" />
     <Content Include="Views\Allocations\Edit.cshtml" />
     <Content Include="Views\Allocations\Index.cshtml" />
-    <Content Include="Views\Enrolls\Create.cshtml" />
-    <Content Include="Views\Enrolls\Delete.cshtml" />
-    <Content Include="Views\Enrolls\Details.cshtml" />
-    <Content Include="Views\Enrolls\Edit.cshtml" />
-    <Content Include="Views\Enrolls\Index.cshtml" />
     <Content Include="Views\AssignCourses\Create.cshtml" />
     <Content Include="Views\AssignCourses\Delete.cshtml" />
     <Content Include="Views\AssignCourses\Details.cshtml" />
     <Content Include="Views\AssignCourses\Edit.cshtml" />
     <Content Include="Views\AssignCourses\Index.cshtml" />
+    <Content Include="Views\Enrolls\Create.cshtml" />
+    <Content Include="Views\Enrolls\Delete.cshtml" />
+    <Content Include="Views\Enrolls\Details.cshtml" />
+    <Content Include="Views\Enrolls\Edit.cshtml" />
+    <Content Include="Views\Enrolls\Index.cshtml" />
+    <Content Include="Views\Enrolls\SaveResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -351,38 +330,23 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912101607501_student.resx">
-      <DependentUpon>201912101607501_student.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201912180523341_clone.resx">
+      <DependentUpon>201912180523341_clone.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912101615180_studnt regdate.resx">
-      <DependentUpon>201912101615180_studnt regdate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201912180532532_g.resx">
+      <DependentUpon>201912180532532_g.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912102004447_drop.resx">
-      <DependentUpon>201912102004447_drop.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201912180534439_gggg.resx">
+      <DependentUpon>201912180534439_gggg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912102007304_room&amp;day.resx">
-      <DependentUpon>201912102007304_room&amp;day.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201912180551389_aa.resx">
+      <DependentUpon>201912180551389_aa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912102008338_room&amp;day data.resx">
-      <DependentUpon>201912102008338_room&amp;day data.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201912180619033_oo.resx">
+      <DependentUpon>201912180619033_oo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912120526273_allocations.resx">
-      <DependentUpon>201912120526273_allocations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912131631070_nullable.resx">
-      <DependentUpon>201912131631070_nullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912140612471_enrollment.resx">
-      <DependentUpon>201912140612471_enrollment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912140626196_assignNew.resx">
-      <DependentUpon>201912140626196_assignNew.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912140627532_assigned.resx">
-      <DependentUpon>201912140627532_assigned.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912141959535_student regno.resx">
-      <DependentUpon>201912141959535_student regno.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201912180657487_cascade.resx">
+      <DependentUpon>201912180657487_cascade.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

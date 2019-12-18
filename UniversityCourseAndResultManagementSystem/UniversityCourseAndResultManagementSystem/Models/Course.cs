@@ -28,7 +28,7 @@ namespace UniversityCourseAndResultManagementSystem.Models
 
         [Required(ErrorMessage = "Please enter Credit")]
         [Range(0.5, 5.0, ErrorMessage ="Credit must be in range between 0.5 to 5.0")]
-        public float Credit { get; set; }
+        public float CourseCredit { get; set; }
 
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }

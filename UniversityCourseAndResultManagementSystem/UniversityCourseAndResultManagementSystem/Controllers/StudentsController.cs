@@ -50,14 +50,15 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "StudentId,StudentName,Email,ContactNo,RegistrationDate,Address,DepartmentId")] Student student)
+        public async Task<ActionResult> Create([Bind(Include = "StudentId,StudentName,Email,ContactNo,RegistrationDate,Address,DepartmentId,RegNo")] Student student)
         {
             if (ModelState.IsValid)
             {
+                student.RegNo = GenerateRegNo(student);
                 db.Students.Add(student);
                 await db.SaveChangesAsync();
                 //return RedirectToAction("Index");
-                FlashMessage.Confirmation("Student registered successfully");
+                FlashMessage.Confirmation("Student registered successfully & the Registration Num is : " + student.RegNo);
                 return RedirectToAction("Create");
             }
 
@@ -65,8 +66,17 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
             return View(student);
         }
 
+        private string GenerateRegNo(Student student)
+        {
+            int id = db.Students.Count(s => (s.DepartmentId == student.DepartmentId)
+                                            && (s.RegistrationDate.Year == student.RegistrationDate.Year)) + 1;
 
-        // Checking unique Email
+            Department department = db.Departments.Where(d => d.DepartmentId == student.DepartmentId).FirstOrDefault();
+            string regNum = department.DepartmentCode + "-" + student.RegistrationDate.Year + "-" + id.ToString("000");
+            return regNum;
+        }
+
+        //Unique checking
         public JsonResult IsEmailExists(string email)
         {
             var emails = db.Students.ToList();
@@ -93,7 +103,6 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
             }
         }
 
-
         // GET: Students/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
@@ -115,7 +124,7 @@ namespace UniversityCourseAndResultManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "StudentId,StudentName,Email,ContactNo,RegistrationDate,Address,DepartmentId")] Student student)
+        public async Task<ActionResult> Edit([Bind(Include = "StudentId,StudentName,Email,ContactNo,RegistrationDate,Address,DepartmentId,RegNo")] Student student)
         {
             if (ModelState.IsValid)
             {

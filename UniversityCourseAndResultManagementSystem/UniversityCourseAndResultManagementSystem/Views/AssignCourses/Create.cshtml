@@ -13,11 +13,10 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>AssignCourse</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.DepartmentId, "Department", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DepartmentId, "DepartmentId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("DepartmentId", null, "--Select Department--", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })
@@ -34,18 +33,16 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CreditToBeTaken, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Credit to be Taken", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CreditToBeTaken, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                @Html.ValidationMessageFor(model => model.CreditToBeTaken, "", new { @class = "text-danger" })
+                @Html.TextBox("CreditToBeTaken", null, new { @class = "form-control", @readonly = "readonly" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.RemainingCredit, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Remaining Credit", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RemainingCredit, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                @Html.ValidationMessageFor(model => model.RemainingCredit, "", new { @class = "text-danger" })
+                @Html.TextBox("RemainingCredit", null, new { @class = "form-control", @readonly = "readonly" })
             </div>
         </div>
 
@@ -59,24 +56,22 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CourseName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Name", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
+                @Html.TextBox("CourseName", null, new { @class = "form-control", @readonly = "readonly" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CourseCredit, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Credit", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CourseCredit, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                @Html.ValidationMessageFor(model => model.CourseCredit, "", new { @class = "text-danger" })
+                @Html.TextBox("CourseCredit", null, new { @class = "form-control", @readonly = "readonly" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Assign" class="btn btn-primary" />
             </div>
         </div>
     </div>
@@ -94,10 +89,8 @@
             $("#DepartmentId").change(function () {
                 var deptId = $("#DepartmentId").val();
                 var parameter = { departmentId: deptId }
-
                 $("#TeacherId").empty();
                 $("#TeacherId").append('<option>--Select Teacher--</option>');
-
 
                 $.ajax({
                     type: "POST",
@@ -106,11 +99,10 @@
                     data: JSON.stringify(parameter),
                     success: function (teacherList) {
                         $.each(teacherList, function (key, value) {
-                            $("#TeacherId").append('<option value=' + key.TeacherId + '>' + value.TeacherName + '</option>');
+                            $("#TeacherId").append('<option value=' + value.TeacherId + '>' + value.TeacherName + '</option>');
                         });
                     }
                 });
-
                 $("#CourseId").empty();
                 $("#CourseId").append('<option>--Select Course--</option>');
 
@@ -121,34 +113,45 @@
                     data: JSON.stringify(parameter),
                     success: function (courseList) {
                         $.each(courseList, function (key, value) {
-                            $("#CourseId").append('<option value=' + key.CourseId + '>' + value.CourseName + '</option>');
+                            $("#CourseId").append('<option value=' + value.CourseId + '>' + value.CourseCode + '</option>');
                         });
                     }
                 });
-
             });
 
 
-            $("#CourseId").change(function () {
-                var id = $("#CourseId").val();
-                var parameter = { courseId: id }
-                $("#CourseName").val("");
-                $("#Credit").val("");
+            $("#TeacherId").change(function () {
+                var id = $("#TeacherId").val();
+                var para = { teacherId: id };
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("GetCourseByCourseId", "Ademoes")',
+                    url: '@Url.Action("GetTeacherById", "AssignCourses")',
                     contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify(parameter),
-                    success: function (course) {
-                        //$("#CourseName").val(course.CourseName);
-                        //$("#Credit").val(course.Credit);
-                        $("#CourseName").val(course.CourseName);
-                        $("#Credit").val(course.Credit);
+                    data: JSON.stringify(para),
+                    dataType: "json",
+                    success: function (teacher) {
+                        $("#CreditToBeTaken").val(teacher.CreditToBeTaken);
+                        $("#RemainingCredit").val(teacher.CreditToBeTaken);
                     }
                 });
             });
 
 
+            $("#CourseId").change(function() {
+                var courseId = $("#CourseId").val();
+                var jsnFormatData = { courseId: courseId };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetCourseById", "AssignCourses")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(jsnFormatData),
+                    dataType: "json",
+                    success: function (course) {
+                        $("#CourseName").val(course.CourseName);
+                        $("#CourseCredit").val(course.CourseCredit);
+                    }
+                });
+            });
         });
     </script>
 }

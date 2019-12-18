@@ -13,12 +13,14 @@ namespace UniversityCourseAndResultManagementSystem.Models
         public int AllocationId { get; set; }
 
         [Display(Name = "Department")]
-        public int DepartmentId { get; set; }
+        public int? DepartmentId { get; set; }
+        [ForeignKey("DepartmentId")]
+        public Department Department { get; set; }
 
-        [Display(Name ="Course")]
-        public int CourseId { get; set; }
+        [Display(Name = "Course")]
+        public int? CourseId { get; set; }
         [ForeignKey("CourseId")]
-        public virtual Course Course { get; set; }
+        public Course Course { get; set; }
 
         [Display(Name = "Room")]
         public int RoomId { get; set; }
@@ -30,12 +32,12 @@ namespace UniversityCourseAndResultManagementSystem.Models
         [ForeignKey("DayId")]
         public virtual Day Day { get; set; }
 
-        [Display(Name ="From")]
+        [Display(Name = "From")]
         //[Column(TypeName ="time")]
         //[DataType(DataType.Time)]
         public string FromTime { get; set; }
 
-        [Display(Name ="To")]
+        [Display(Name = "To")]
         //[Column(TypeName="time")]
         //[DataType(DataType.Time)]
         public string ToTime { get; set; }
